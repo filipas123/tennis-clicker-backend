@@ -1,0 +1,24 @@
+{
+  "name": "tennis-clicker-backend",
+  "version": "1.0.0",
+  "description": "WebSocket backend server for Tennis Clicker - streams live tennis match data",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "PORT=8765 node server.js",
+    "dev": "PORT=8765 node --watch server.js"
+  },
+  "keywords": [
+    "tennis",
+    "websocket",
+    "live-scores",
+    "accessibility"
+  ],
+  "author": "@zeddd_365",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.18.0",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2"
+  }
+}
