@@ -323,11 +323,33 @@ function handleUnsubscribe(ws) {
 /**
  * Handle refresh request
  */
-function handleRefresh(ws) {
+async function handleRefresh(ws) {
   if (ws.subscribedEventId) {
+    // Immediately fetch and send updated match data
+    const eventData = await fetchEventDetails(ws.subscribedEventId);
+    if (eventData) {
+      const matchData = parseMatchData(eventData);
+      if (matchData) {
+        ws.send(JSON.stringify({
+          type: 'match_update',
+          data: matchData
+        }));
+        ws.send(JSON.stringify({
+          type: 'info',
+          message: '🔄 Match data refreshed'
+        }));
+        console.log(`[${ws.subscribedEventId}] Forced refresh completed`);
+        return;
+      }
+    }
     ws.send(JSON.stringify({
-      type: 'info',
-      message: 'Refresh command received - next update will be sent shortly'
+      type: 'error',
+      message: 'Failed to refresh match data'
+    }));
+  } else {
+    ws.send(JSON.stringify({
+      type: 'error',
+      message: 'No match subscribed'
     }));
   }
 }
