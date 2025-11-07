@@ -32,7 +32,7 @@ const monitorIntervals = new Map();
  */
 async function fetchLiveTennisEvents() {
   try {
-    const url = `https://${RAPIDAPI_HOST}/events/live/sport/${TENNIS_SPORT_ID}`;
+    const url = `https://${RAPIDAPI_HOST}/sports/${TENNIS_SPORT_ID}/events/live?page=1`;
     
     const response = await fetch(url, {
       method: 'GET',
