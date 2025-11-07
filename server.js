@@ -18,7 +18,7 @@ const AUTH_USERNAME = process.env.AUTH_USERNAME || 'admin';
 const AUTH_PASSWORD = process.env.AUTH_PASSWORD || 'password';
 
 // Tennis sport ID in SportScore API
-const TENNIS_SPORT_ID = 5;
+const TENNIS_SPORT_ID = 2;
 
 // Polling interval for match updates (in milliseconds)
 const POLL_INTERVAL = 5000; // 5 seconds
