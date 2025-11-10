@@ -21,7 +21,7 @@ const AUTH_PASSWORD = process.env.AUTH_PASSWORD || 'password';
 const TENNIS_SPORT_ID = 2;
 
 // Polling interval for match updates (in milliseconds)
-const POLL_INTERVAL = 65; // 65ms to match premium API speed
+const POLL_INTERVAL = 25; // 25ms (40 updates/sec) for near-instant response
 
 // Store active subscriptions
 const subscriptions = new Map();
