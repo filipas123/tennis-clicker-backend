@@ -325,10 +325,13 @@ function handleUnsubscribe(ws) {
  */
 async function handleRefresh(ws) {
   if (ws.subscribedEventId) {
+    console.log(`[REFRESH] Fetching details for event ${ws.subscribedEventId}`);
     // Immediately fetch and send updated match data
     const eventData = await fetchEventDetails(ws.subscribedEventId);
+    console.log(`[REFRESH] Event data received:`, eventData ? 'SUCCESS' : 'FAILED');
     if (eventData) {
       const matchData = parseMatchData(eventData);
+      console.log(`[REFRESH] Match data parsed:`, matchData ? 'SUCCESS' : 'FAILED');
       if (matchData) {
         ws.send(JSON.stringify({
           type: 'match_update',
